@@ -14,7 +14,7 @@ at https://gitlab.nic.cz/turris/turris-omnia-uboot/ in `omnia-2019` branch.
 To build `u-boot-spl.kwb` use
 
 ```
-nix-build -E '(import <nixpkgs> { overlays = [ (import ./overlay.nix) ];  crossSystem = "armv7l-linux"; } ).uBootOmnia'
+nix-build -o result-uboot -E '(import <nixpkgs> { overlays = [ (import ./overlay.nix) ];  crossSystem = "armv7l-linux"; } ).uBootOmnia'
 ```
 
 Also if for some reason you've managed to break your UBoot, `./result` contains `kwboot` executable

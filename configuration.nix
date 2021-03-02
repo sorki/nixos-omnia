@@ -84,8 +84,12 @@
   {
     contents = [
       {
-        source = extlinuxConf;
-        target = "/boot/extlinux/extlinux.conf";
+        source = "${extlinuxConf}/extlinux";
+        target = "boot";
+      }
+      {
+        source = "${extlinuxConf}/nixos";
+        target = "boot";
       }
     ];
 
