@@ -1,5 +1,7 @@
 # nixos-omnia
 
+**🚧 Work in progress 🚧**
+
 Overlay and sample `configuration.nix` which can be used to build an installer
 image or medkit tarball for Turris Omnia router.
 
@@ -17,14 +19,14 @@ To build `u-boot-spl.kwb` use
 nix-build -o result-uboot -E '(import <nixpkgs> { overlays = [ (import ./overlay.nix) ];  crossSystem = "armv7l-linux"; } ).uBootOmnia'
 ```
 
-Also if for some reason you've managed to break your UBoot, `./result` contains `kwboot` executable
+Also if for some reason you've managed to break your UBoot, `./result-uboot` contains `kwboot` executable
 which can load UBoot over UART.
 
 ### Prepare TFTP server
 
 Following NixOS configuration snippet can be used to quickly set-up
 private LAN using e.g. USB ethernet dongle. You can use any free interface
-- make sure to replace `enp8s0u2` with your interface name.
+- make sure to replace `enp8s0u2` with your "external" interface name.
 
 ```nix
 let
@@ -86,6 +88,8 @@ sf update ${kernel_addr_r} 0 ${filesize}
 
 ## Building medkit tarball
 
+To build either natively or using cross compilation toolchain, use
+
 ```
 ./build-medkit.sh
 ```
@@ -121,7 +125,21 @@ setenv bootmcd sysboot mmc 0:1 any ${scriptaddr} /@/boot/extlinux/extlinux.conf
 saveenv
 ```
 
+Now you're pretty much done with bootstrapping. Set-up SSH keys or root password
+and deploy new configuration remotely.
+
 ## Building the installer SD image
+
+### 🚧 Warning 🚧
+
+While the installer SD image boots automatically, you probably cannot use
+it to install NixOS using `nixos-install`. While `nixos-generate-config`
+works correctly, there are no `armv7l` binary cache and the device
+might not have enough memory to perform evaluation and installation.
+
+Installer image can still be useful for remote bootstrapping using `x86` or `armv7l` machine.
+
+### Build
 
 To build either natively or using cross compilation toolchain, use
 
