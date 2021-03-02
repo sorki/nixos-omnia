@@ -5,6 +5,8 @@
 Overlay and sample `configuration.nix` which can be used to build an installer
 image or medkit tarball for Turris Omnia router.
 
+For support check out #nixos-on-your-router@freenode.
+
 ## Upgrading u-boot
 
 For painless set-up, we need UBoot with `CONFIG_DISTRO_DEFAULTS`
@@ -15,8 +17,9 @@ at https://gitlab.nic.cz/turris/turris-omnia-uboot/ in `omnia-2019` branch.
 
 To build `u-boot-spl.kwb` use
 
-```
-nix-build -o result-uboot -E '(import <nixpkgs> { overlays = [ (import ./overlay.nix) ];  crossSystem = "armv7l-linux"; } ).uBootOmnia'
+```bash
+nix-build -o result-uboot \
+  -E '(import <nixpkgs> { overlays = [ (import ./overlay.nix) ]; crossSystem = "armv7l-linux"; } ).uBootOmnia'
 ```
 
 Also if for some reason you've managed to break your UBoot, `./result-uboot` contains `kwboot` executable
