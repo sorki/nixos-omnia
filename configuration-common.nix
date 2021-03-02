@@ -16,6 +16,9 @@
     "boot.shell_on_fail"
     "earlyprintk"
     "console=ttyS0,115200"
+    # w/o this default PCI wireless cards won't work, see
+    # https://github.com/sorki/nixos-omnia/issues/1
+    "pcie_aspm=off"
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   system.stateVersion = "20.09";
