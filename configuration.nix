@@ -100,6 +100,12 @@
     };
   };
 
+  system.build.medkit = pkgs.runCommand "omnia-medkit" {}
+  ''
+    mkdir $out
+    cp ${config.system.build.tarball}/tarball/*.tar.gz $out/omnia-medkit-nixos.tar.gz
+  '';
+
   # unused
   /*
   sdImage =
