@@ -1,13 +1,11 @@
-# Used by ci.nix, update with
-# $ nix-prefetch-url --unpack https://github.com/NixOS/nixpkgs/archive/${REVISION}.tar.gz
-#
-let
-  rev="770ecb1d3134a7b0e4469eb790836bd837c9f675";
-  hash="0q8kdh5ww9cm28pf9y47q2p4g4q4ipf34zr087vld7zdykjkxi9a";
-in
+# Pin the deployment package-set to a specific version of nixpkgs
+# update with nix-prefetch-url --unpack <URL>
+# - tracks nixos-20.09 branch
+# - this is a default pin for deployment and shells
+
 import (
-  "${fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/${rev}.tar.gz";
-    sha256 = hash;
-  }}/nixos"
-)
+  
+  "${builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/2b973d233906fb0483263bca71bb789cad61513e.tar.gz";
+    sha256 = "11h21zsas7xgdax6xs2lh3mz8spvdk8i63czysr4p69yir1h1cd7";
+  }}/nixos")
