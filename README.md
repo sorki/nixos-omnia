@@ -84,13 +84,49 @@ sf probe
 sf update ${kernel_addr_r} 0 ${filesize}
 ```
 
+## Building medkit tarball
 
-## Building the installer
+```
+./build-medkit.sh
+```
+
+### Loading
+
+Format flash drive, it absolutely needs to have at least one partition on it.
+
+```
+mkfs.btrfs /dev/sdXY
+mount /dev/sdXY /mnt
+cp ./result-medkit/*.tar.gz /mnt/
+umount /mnt
+```
+
+Plug into Omnia, hold reset for 4 seconds (4 leds on) which starts
+recovery mode which then copies contents of medkit tarball to MMC.
+
+### UBoot shell
+
+After medkit does its job, break into UBoot shell and issue
+
+```
+sysboot mmc 0:1 any ${scriptaddr} /@/boot/extlinux/extlinux.conf
+```
+
+to boot from NixOS installed on MMC.
+
+To make this permanent, use
+
+```
+setenv bootmcd sysboot mmc 0:1 any ${scriptaddr} /@/boot/extlinux/extlinux.conf
+saveenv
+```
+
+## Building the installer SD image
 
 To build either natively or using cross compilation toolchain, use
 
 ```
-./build.sh
+./build-sdimage.sh
 ```
 
 ## Flashing the installer
