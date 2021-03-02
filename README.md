@@ -5,7 +5,7 @@
 Overlay and sample `configuration.nix` which can be used to build an installer
 image or medkit tarball for Turris Omnia router.
 
-For support check out #nixos-on-your-router@freenode.
+For support check out `#nixos-on-your-router@freenode`.
 
 ## Upgrading u-boot
 
