@@ -1,11 +1,8 @@
-# Pin the deployment package-set to a specific version of nixpkgs
 # update with nix-prefetch-url --unpack <URL>
-# - tracks nixos-20.09 branch
-# - this is a default pin for deployment and shells
 
 import (
-  
   "${builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/2b973d233906fb0483263bca71bb789cad61513e.tar.gz";
-    sha256 = "11h21zsas7xgdax6xs2lh3mz8spvdk8i63czysr4p69yir1h1cd7";
+    # XXX: switch to upstream
+    url = "https://github.com/sorki/nixpkgs/archive/8e687d60ce956fe9cb5e5eba4dec901dbdc55f72.tar.gz";
+    sha256 = "1nja86sfqf6k8w95h48cn3ndpg3a0blpvgnvpl8h6yxn02pq10dj";
   }}/nixos")

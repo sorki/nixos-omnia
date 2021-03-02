@@ -1,5 +1,4 @@
-#import ./nixpkgs.nix {
-import <nixpkgs/nixos> {
+import ./nixpkgs.nix {
   configuration =
     if builtins.currentSystem == "armv7l-linux"
     then builtins.toPath (./. + "/configuration.nix")
