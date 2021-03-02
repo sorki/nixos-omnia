@@ -25,17 +25,6 @@
     "console=ttyS0,115200"
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPatches = [ {
-        name = "crashdump-config";
-        patch = null;
-        extraConfig = ''
-                CRASH_DUMP y
-                DEBUG_INFO y
-                PROC_VMCORE y
-                LOCKUP_DETECTOR y
-                HARDLOCKUP_DETECTOR y
-              '';
-        } ];
   system.stateVersion = "20.09";
 
   environment.systemPackages = with pkgs; [
@@ -52,8 +41,6 @@
   # minification
   security.polkit.enable = false;
   services.udisks2.enable = lib.mkForce false;
-
-  # omnia new
 
   fileSystems = {
     "/" = {
