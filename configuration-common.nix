@@ -26,6 +26,7 @@
     wget screen vim
 
     usbutils
+    pciutils
     # more cross issues
     # https://github.com/NixOS/nixpkgs/pull/86645
     #libgpiod
