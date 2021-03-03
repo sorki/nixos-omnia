@@ -21,7 +21,6 @@
     "pcie_aspm=off"
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  system.stateVersion = "20.09";
 
   environment.systemPackages = with pkgs; [
     wget screen vim
