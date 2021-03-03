@@ -9,20 +9,8 @@
     "${modulesPath}/installer/cd-dvd/system-tarball.nix"
     "${modulesPath}/profiles/installation-device.nix"
     ./configuration-common.nix
+    ./configuration-mmcroot.nix
   ];
-
-  fileSystems = {
-    "/" = {
-      device = "/dev/mmcblk0p1";
-      fsType = "btrfs";
-      options = [
-        "subvol=@"
-        "noatime"
-        "nodiratime"
-        "discard=async"
-      ];
-    };
-  };
 
   tarball =
     let
