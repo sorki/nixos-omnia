@@ -34,6 +34,9 @@
     #lm_sensors
   ];
 
+  # wireless firmware
+  hardware.enableRedistributableFirmware = true;
+
   # minification
   security.polkit.enable = false;
   services.udisks2.enable = lib.mkForce false;
