@@ -3,7 +3,7 @@
 **🚧 Work in progress 🚧**
 
 Overlay and sample `configuration.nix` which can be used to build an installer
-image or medkit tarball for Turris Omnia router.
+image or medkit tarball for [Turris Omnia](https://docs.turris.cz/hw/omnia/omnia/) router.
 
 For support check out `#nixos-on-your-router@freenode`.
 
@@ -137,8 +137,9 @@ and deploy new configuration remotely.
 
 While the installer SD image boots automatically, you probably cannot use
 it to install NixOS using `nixos-install`. While `nixos-generate-config`
-works correctly, there are no `armv7l` binary cache and the device
-might not have enough memory to perform evaluation and installation.
+works correctly, there are no `armv7l` binary cache ~~and the device
+might not have enough memory to perform evaluation and installation~~.
+There are couple of [hardware variants](https://docs.turris.cz/hw/omnia/revisions/), some have 2GB memory.
 
 Installer image can still be useful for remote bootstrapping using `x86` or `armv7l` machine.
 
